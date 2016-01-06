@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Check Giftcard Availability
+  script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+  <!-- Latest compiled and minified CSS -->
+  link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+  <!-- Optional theme -->
+  link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+  <!-- Latest compiled and minified JavaScript -->
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+  script(src="giftcard.js")
+  link(rel="stylesheet", href="style.css")
+body
+  div.col-md-4.col-md-offset-4
+    form
+      div.form-group
+        h3 Current Cart Value: 
+        label(for="cartVal")
+        input(type="text" id="cartVal" name="cartVal" placeholder="set the current cart value (eg. 25.00)").form-control
+    br
+    form(id="giftcard" action="javascript:void(0)")
+      div.form-group
+        h3 Apply Your coupon here: 
+        label(for="coupon")
+        input(type="text" name="coupon" id="coupon" placeholder="apply the code here (eg. END3)").form-control
+        br
+        input(type="submit").form-control.btn-success
+    div.allCoupons
+      h4 *Avaialble giftcards in the database*
+      ul
+        each giftcard in giftcards
+          li code #{giftcard.code}, with value $#{giftcard.value}, expires at #{giftcard.expiration}
+    div#result
+    div#totalAmount
